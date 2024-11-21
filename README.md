@@ -67,8 +67,8 @@ The project is being developed as part of the **CS 609: Final Project Assignment
 ### **Installation**
 1. Clone this repository:
    ```bash
-   git clone <repository-url>
-   cd python-interpreter
+   git clone https://github.com/parastiware/Interpreter.git
+   cd interpreter
    ```
 2. Write a sample program in the input format, such as:
     ```python

@@ -7,6 +7,7 @@ class Lexer:
         self.current_pos = 0
 
     def tokenize(self):
+        #for now I am only listing the common 
         token_specs = [
             ("NUMBER", r'\d+'),
             ("ID", r'[a-zA-Z_][a-zA-Z0-9_]*'),
