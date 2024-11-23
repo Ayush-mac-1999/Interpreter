@@ -1,15 +1,16 @@
-from Interpreter.AST_node import AssignNode, BinOpNode, PrintNode
-
+from AST_node import AssignNode,BinOpNode,PrintNode
 
 class Interpreter:
     def __init__(self):
-        self.variables = {}
+        self.variables = {}  # Environment to store variable values
 
     def visit(self, node):
         if isinstance(node, AssignNode):
+            # Evaluate the expression and assign it to the variable
             value = self.visit(node.expr)
             self.variables[node.var_name] = value
         elif isinstance(node, BinOpNode):
+            # Evaluate both sides of the binary operation
             left = self.visit(node.left)
             right = self.visit(node.right)
             if node.op == "PLUS":
@@ -21,8 +22,16 @@ class Interpreter:
             elif node.op == "DIV":
                 return left / right
         elif isinstance(node, PrintNode):
+            # Evaluate the expression and print the result
             print(self.visit(node.expr))
-        elif isinstance(node, int) or isinstance(node, str):
-            return self.variables.get(node, node)
+        elif isinstance(node, int):
+            # Return numeric literals directly
+            return node
+        elif isinstance(node, str):
+            # Look up variable values
+            if node in self.variables:
+                return self.variables[node]
+            else:
+                raise NameError(f"Variable '{node}' is not defined")
         else:
-            raise ValueError("Unsupported node type")
+            raise ValueError(f"Unsupported node type: {type(node)}")

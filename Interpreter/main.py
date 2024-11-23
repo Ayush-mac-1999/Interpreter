@@ -17,7 +17,6 @@ def main(input_file):
     ast = []
     while parser.current_pos < len(tokens):  # Parse multiple statements
         ast.append(parser.parse())
-    print("AST:", ast)  # Optional: Debugging to see AST
     
     # Step 4: Interpret the AST
     interpreter = Interpreter()
