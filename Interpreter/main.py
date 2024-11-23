@@ -1,3 +1,4 @@
+import os
 from Lexer import Lexer
 from Parser import Parser
 from Interpreter import Interpreter
@@ -24,6 +25,8 @@ def main(input_file):
         interpreter.visit(node)
 
 if __name__ == "__main__":
-    # Specify the input file name
-    input_file = "program.txt"
-    main(input_file)
+      dirname="./examples"
+      for filename in os.listdir(dirname):
+            print("output for file---"+filename+"----- \n")
+            main(dirname+"/"+filename)
+            print("\n")
