@@ -18,3 +18,10 @@ class BinOpNode(ASTNode):
 class PrintNode(ASTNode):
     def __init__(self, expr):
         self.expr = expr
+class VarNode(ASTNode):
+    def __init__(self, name):
+        self.name = name
+
+class NumberNode(ASTNode):
+    def __init__(self, value):
+        self.value = value
